@@ -1,27 +1,50 @@
 class Scraper
   
   #class for scrapping
-URL="https://www.manutd.com/en/players-and-staff/first-team"
+URL='https://www.premierleague.com/clubs/12/Manchester-United/squad'
 
-def self.scrape_players
-  page = Nokogiri::HTML(open(URL))
-  #puts page.css (".mu-content")[0]
-  puts page.css ("div.mu-item team-card")[0]
-  puts page.css ("div.team-grid__item ng-scope")[0]
+def self.scrape_bio
+  #page = Nokogiri::HTML(open(URL))
+
   binding.pry
   
 end
 
-def self.scrape_bio(player)
-  #code to scrape player scrape_bio
+def self.scrape_players
+   page = Nokogiri::HTML(open(URL))
   
- 
+  i=0
+  player_list = page.css('ul.squadListContainer.squadList a')
+
+
+  player_list.each do |player|
+    player_hash = {
+	    name: page.css('ul.squadListContainer.squadList .name')[i].text, 
+  	  position: page.css('.position')[i].text,
+  	  jersey_number: page.css('li span.number')[i].text,
+  	  url:  page.css('ul.squadListContainer.squadList a')[i].attr('href')
+    }
+  	i+=1
+  	binding.pry
+  end
   
+end
 end
 
 
 
-
-
-  
-end
+  # def self.scrape_titles
+  #   pg = open(BASE_URL)
+  #   parsed_html = Nokogiri.HTML(pg)
+  #   movie_lis =
+  #     parsed_html.css(
+  #       "h2:contains('Now Playing')~ul.visual-list.movie-list li.visual-item"
+  #     )
+  #   movie_lis.each do |li|
+  #     input_args = {
+  #       title: li.css('div.visual-detail a').text.strip,
+  #       url: li.css('a')[0].attr('href')
+  #     }
+  #     Movie.new(input_args)
+  #   end
+  # end
