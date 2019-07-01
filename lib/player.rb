@@ -1,13 +1,10 @@
 class Player
-  attr_accessor :first_name, :last_name, :position, :dob, :date_joined, :club_debut, :bio
+  attr_accessor :name, :position, :player_url, :jersey_number
   
   @@all =[]
   
   def initialize(player_hash)
-    
-    @firtst_name = player_hash.firtst_name
-    @last_name = player_hash.last_name
-  
+    player_hash.each {|key, value| self.send(("#{key}="), value)}
     self.class.all << self
   
   end

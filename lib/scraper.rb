@@ -22,10 +22,11 @@ def self.scrape_players
 	    name: page.css('ul.squadListContainer.squadList .name')[i].text, 
   	  position: page.css('.position')[i].text,
   	  jersey_number: page.css('li span.number')[i].text,
-  	  url:  page.css('ul.squadListContainer.squadList a')[i].attr('href')
+  	  player_url:  page.css('ul.squadListContainer.squadList a')[i].attr('href')
     }
   	i+=1
-  	binding.pry
+  	
+  	Player.new(player_hash)
   end
   
 end
