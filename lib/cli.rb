@@ -9,6 +9,7 @@ class CLI
         return
       else
         self.list_players
+        self.choose_player
       end
     end
   end
@@ -18,7 +19,7 @@ class CLI
   end
 
   def main_menu
-    puts 'Would you like to see team?'
+    puts "Would you like to see team? Press Y or exit to exit"
     input = gets.strip.downcase
     return input
   end
@@ -26,7 +27,25 @@ class CLI
   def list_players
     Player.all.each_with_index {|player, i| puts "#{i+1}.""\t""#{player.name}""\t\t" "#{player.position}"}
   end
+  
+  def choose_player
+    puts "Choose a player you want to know more about!"
+    info = gets.strip.to_i-1
+    player = Player.all[info]
+   # Scraper.scrape_info(player)
+    self.display_player_info(player)
+  end
+  
+  def display_player_info(player)
+    puts "\n"
+    puts "Name: " + "#{player.name}"
+    puts "Position: " + "#{player.position}"
+    puts "Jersey_number: " + "#{player.jersey_number}"
+    puts "\n"
+
+  end
 
 
-end
 
+ end
+ 
