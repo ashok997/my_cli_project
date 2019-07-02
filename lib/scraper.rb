@@ -26,10 +26,12 @@ def self.scrape_info(player)
     #https://www.premierleague.com/players/4330/David-de-Gea/overview
     url = "https://www.premierleague.com"+"#{player.player_url}"
     info_page = Nokogiri.HTML(open(url))
-    binding.pry
+    player.country = info_page.css("div .playerInfo .playerCountry").text
+    player.dob = info_page.css("div .playerInfo .pdcol2 .info").text.strip
+    player.height = info_page.css("div .playerInfo .pdcol3 .info")[0].text
+    player.weight = info_page.css("div .playerInfo .pdcol3 .info")[1].text
   end
   
-
 
 
 end

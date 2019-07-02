@@ -42,6 +42,12 @@ class CLI
     puts "Name: " + "#{player.name}"
     puts "Position: " + "#{player.position}"
     puts "Jersey_number: " + "#{player.jersey_number}"
+    puts "Country: " + "#{player.country}"
+    puts "Date of Birth (Age): " + "#{player.dob}"
+    puts "Heigth: " + "#{player.height}"
+    puts "Weight: " + "#{player.weight}"
+    
+
     puts "\n"
 
   end
