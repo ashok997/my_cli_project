@@ -6,7 +6,6 @@ class Player
   def initialize(player_hash)
     player_hash.each {|key, value| self.send(("#{key}="), value)}
     self.class.all << self
-  
   end
   
   def self.all

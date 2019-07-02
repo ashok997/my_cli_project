@@ -30,9 +30,10 @@ class CLI
   
   def choose_player
     puts "Choose a player you want to know more about!"
+    
     info = gets.strip.to_i-1
     player = Player.all[info]
-   # Scraper.scrape_info(player)
+    Scraper.scrape_info(player)
     self.display_player_info(player)
   end
   
