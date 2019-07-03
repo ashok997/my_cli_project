@@ -1,5 +1,5 @@
 class Player
-  attr_accessor :name, :position, :player_url, :jersey_number, :country, :dob, :height, :weight
+  attr_accessor :name, :position, :player_url, :jersey_number, :country, :dob, :height, :weight, :bio
   
   
   @@all =[]

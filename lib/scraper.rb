@@ -32,7 +32,11 @@ def self.scrape_info(player)
     player.weight = info_page.css("div .playerInfo .pdcol3 .info")[1].text
   end
   
-
-
+  def self.scrape_bio(player)
+    #https://www.manutd.com/en/players-and-staff/detail/david-de-gea
+    url = "https://www.manutd.com/en/players-and-staff/detail/"+"#{player.name.gsub(" ","-").downcase}"
+    bio = Nokogiri.HTML(open(url))
+    player.bio = bio.css("div .player-detail__bio .player-content").text
+    binding.pry
+  end
 end
-

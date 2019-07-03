@@ -34,6 +34,7 @@ class CLI
     info = gets.strip.to_i-1
     player = Player.all[info]
     Scraper.scrape_info(player)
+   # Scraper.scrape_bio(player)
     self.display_player_info(player)
   end
   
@@ -46,8 +47,7 @@ class CLI
     puts "Date of Birth (Age): " + "#{player.dob}"
     puts "Heigth: " + "#{player.height}"
     puts "Weight: " + "#{player.weight}"
-    
-
+   # puts "Bio: " + "#{player.bio}"
     puts "\n"
 
   end
