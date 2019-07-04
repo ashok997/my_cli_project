@@ -6,20 +6,23 @@ class CLI
     loop do
       user_input = main_menu
       if user_input == 'exit'
+        puts "    ----------Cheers to another great season!!----------"
         return
-      else
+      elsif user_input =='y'
         self.list_players
         self.choose_player
+      else
+        puts "You have preesed an invalid key. Please try again !!"
       end
     end
   end
 
   def welcome
-    puts "Welcome fans of Manchester United!\n\n"
+    puts "================== Welcome fans of Manchester United! =========================\n\n"
   end
 
   def main_menu
-    puts "Would you like to see team? Press Y or exit to exit"
+    puts "Would you like to see the current team? Press 'Y' or 'exit' to exit"
     input = gets.strip.downcase
     return input
   end
@@ -33,9 +36,14 @@ class CLI
     
     info = gets.strip.to_i-1
     player = Player.all[info]
+    
     Scraper.scrape_info(player)
-   # Scraper.scrape_bio(player)
+    Scraper.scrape_bio(player)
+    
     self.display_player_info(player)
+    puts "Retreiving more info about player ...."
+    sleep(2)
+   self.display_player_bio(player)
   end
   
   def display_player_info(player)
@@ -47,11 +55,12 @@ class CLI
     puts "Date of Birth (Age): " + "#{player.dob}"
     puts "Heigth: " + "#{player.height}"
     puts "Weight: " + "#{player.weight}"
-   # puts "Bio: " + "#{player.bio}"
     puts "\n"
-
   end
-
+  
+  def display_player_bio(player)
+    puts "Bio: " + "#{player.bio}"
+  end
 
 
  end
