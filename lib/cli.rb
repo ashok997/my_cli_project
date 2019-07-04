@@ -41,25 +41,27 @@ class CLI
     Scraper.scrape_bio(player)
     
     self.display_player_info(player)
+    puts "Player info retreived from 'https://www.premierleague.com'"
     puts "Retreiving more info about player ...."
-    sleep(2)
-   self.display_player_bio(player)
+    sleep(4)
+    self.display_player_bio(player)
+    puts "Player bio retreived from 'https://www.manutd.com'"
   end
   
   def display_player_info(player)
     puts "\n"
-    puts "Name: " + "#{player.name}"
-    puts "Position: " + "#{player.position}"
-    puts "Jersey_number: " + "#{player.jersey_number}"
-    puts "Country: " + "#{player.country}"
-    puts "Date of Birth (Age): " + "#{player.dob}"
-    puts "Heigth: " + "#{player.height}"
-    puts "Weight: " + "#{player.weight}"
+    puts "Name: " + "#{player.name}".colorize(:red)
+    puts "Position: " + "#{player.position}".colorize(:red)
+    puts "Jersey_number: " + "#{player.jersey_number}".colorize(:red)
+    puts "Country: " + "#{player.country}".colorize(:red)
+    puts "Date of Birth (Age): " + "#{player.dob}".colorize(:red)
+    puts "Heigth: " + "#{player.height}".colorize(:red)
+    puts "Weight: " + "#{player.weight}".colorize(:red)
     puts "\n"
   end
   
   def display_player_bio(player)
-    puts "Bio: " + "#{player.bio}"
+    puts "#{player.bio}".colorize(:green)
   end
 
 
