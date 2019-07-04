@@ -34,8 +34,10 @@ def self.scrape_info(player)
   
   def self.scrape_bio(player)
     #https://www.manutd.com/en/players-and-staff/detail/david-de-gea
-    url = "https://www.manutd.com/en/players-and-staff/detail/"+"#{player.name.gsub(" ","-").downcase}"
+    url_name = player.name.gsub(" ","-").downcase.unicode_normalize(:nfkd).encode('ASCII', replace: '')
+    url = "https://www.manutd.com/en/players-and-staff/detail/"+"#{url_name}"
     bio = Nokogiri.HTML(open(url))
+   # player.bio = bio.css("div .player-detail__bio .player-content").text
     player.bio = bio.css("div .player-detail__bio .player-content").text
   end
 end

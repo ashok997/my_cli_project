@@ -41,10 +41,12 @@ class CLI
     Scraper.scrape_bio(player)
     
     self.display_player_info(player)
+    puts "\n"
     puts "Player info retreived from 'https://www.premierleague.com'"
     puts "Retreiving more info about player ...."
     sleep(4)
     self.display_player_bio(player)
+    puts "\n"
     puts "Player bio retreived from 'https://www.manutd.com'"
   end
   
