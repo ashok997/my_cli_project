@@ -40,4 +40,5 @@ def self.scrape_info(player)
    # player.bio = bio.css("div .player-detail__bio .player-content").text
     player.bio = bio.css("div .player-detail__bio .player-content").text
   end
+  
 end
