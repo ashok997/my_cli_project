@@ -4,7 +4,7 @@ class CLI
     self.welcome
     Scraper.scrape_players
     loop do
-      user_input = main_menu
+      user_input = menu
       if user_input == 'exit'
         puts "    ----------Cheers to another great season!!----------"
         return
@@ -23,7 +23,7 @@ class CLI
     puts "Would you like to see the current team? Press 'Y' or 'exit' to exit \n"
   end
 
-  def main_menu
+  def menu
     input = gets.strip.downcase
     return input
   end
@@ -38,16 +38,15 @@ class CLI
     puts "Choose a player you want to know more about!"
     puts "To choose player by jersey number, type 'number'"
     
-    input = gets.strip.downcase
+    input = menu
     
     if input == "number"
-     # player = Player.find_by_number('7')
       puts "Enter the jesery number of player you are looking for "
-      info = gets.chomp
+      info = menu
       player = Player.find_by_number(info)
     else
       info = input.strip.to_i-1
-      player = Player.all[info]
+      player = Player.all[info] 
     end
   
     Scraper.scrape_info(player)
