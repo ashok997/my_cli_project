@@ -38,7 +38,7 @@ def self.scrape_info(player)
     url = "https://www.manutd.com/en/players-and-staff/detail/"+"#{url_name}"
     bio = Nokogiri.HTML(open(url))
    # player.bio = bio.css("div .player-detail__bio .player-content").text
-    player.bio = bio.css("div .player-detail__bio .player-content").text
+    player.bio = bio.search("div .player-detail__bio .player-content .player-content__cta").text.strip
   end
   
 end

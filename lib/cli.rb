@@ -44,9 +44,14 @@ class CLI
       puts "Enter the jesery number of player you are looking for "
       info = menu
       player = Player.find_by_number(info)
-    else
+    elsif input.to_i > 0
       info = input.strip.to_i-1
       player = Player.all[info] 
+    else 
+      puts "You have preesed an invalid key. Please try again !!"
+      puts "Would you like to see the current team again? Press 'y' to coninue"
+      puts "Press 'exit' to exit!"
+      return
     end
   
     Scraper.scrape_info(player)
