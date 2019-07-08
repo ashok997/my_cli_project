@@ -75,9 +75,11 @@ class CLI
     puts "Weight: " + "#{player.weight}".colorize(:red)
     puts "\n"
     puts "Player info retreived from 'https://www.premierleague.com/'"
+
   end
   
   def display_player_bio(player)
+    puts "\n"
     puts "#{player.bio}".colorize(:green)
     puts "\n"
     puts "Player bio retreived from 'https://www.manutd.com/'"
