@@ -30,12 +30,16 @@ class CLI
   
   def print_squad_table
     rows =[]
+    
     Player.all.each_with_index do |player, i| 
-      rows << ["#{i+1}.", "#{player.name}", "#{player.position}","#{player.jersey_number}"]
+      rows << ["#{i+1}.".colorize(:light_green), "#{player.name}".colorize(:blue), "#{player.position}".colorize(:red),"#{player.jersey_number}".colorize(:green)]
     end
-    table = Terminal::Table.new :headings => ["S.N.", "Name", "Position", "Jersey Number"], :rows => rows
-
+    
+    table = Terminal::Table.new :title => " Manchester United Squad 2019/20".colorize(:red), :headings => ["S.N.", "Name", "Position", "Jersey Number"], :rows => rows
+    table.align_column(3, :center)
+    table.align_column(2, :center)
     puts table
+
   
   end
   
@@ -64,7 +68,7 @@ class CLI
     
     self.display_player_info(player)
     puts "Retreiving more info about player ....".colorize(:yellow)
-    sleep(2)
+    sleep(3)
     self.display_player_bio(player)
   
   end
