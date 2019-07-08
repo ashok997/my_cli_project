@@ -26,10 +26,10 @@ def self.scrape_info(player)
     #https://www.premierleague.com/players/4330/David-de-Gea/overview
     url = "https://www.premierleague.com"+"#{player.player_url}" 
     info_page = Nokogiri.HTML(open(url))
-    player.country = info_page.css("div .playerInfo .playerCountry").text
+    player.country = info_page.css("div .playerInfo .playerCountry").text 
     player.dob = info_page.css("div .playerInfo .pdcol2 .info").text.strip
-    player.height = info_page.css("div .playerInfo .pdcol3 .info")[0].text
-    player.weight = info_page.css("div .playerInfo .pdcol3 .info")[1].text 
+    player.height = info_page.css("div .playerInfo .pdcol3 .info")[0] .text if  info_page.css("div .playerInfo .pdcol3 .info")[0]
+    player.weight = info_page.css("div .playerInfo .pdcol3 .info")[1].text if info_page.css("div .playerInfo .pdcol3 .info")[1]
   end
   
   def self.scrape_bio(player)
@@ -37,7 +37,6 @@ def self.scrape_info(player)
     url_name = player.name.gsub(" ","-").downcase.unicode_normalize(:nfkd).encode('ASCII', replace: '')
     url = "https://www.manutd.com/en/players-and-staff/detail/"+"#{url_name}"
     bio = Nokogiri.HTML(open(url))
-   # player.bio = bio.css("div .player-detail__bio .player-content").text
     player.bio = bio.css("div .player-detail__bio .player-content .player-content__cta").text.strip
   end
   

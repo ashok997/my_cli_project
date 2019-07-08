@@ -3,8 +3,6 @@ require 'nokogiri'
 require 'open-uri'
 require 'colorize'
 
-require_relative "./my_cli_project/version"
-
 
 module MyCliProject
   class Error < StandardError; end
@@ -14,3 +12,4 @@ end
 require_relative "./cli"
 require_relative "./player"
 require_relative "./scraper"
+require_relative "./my_cli_project/version"

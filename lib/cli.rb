@@ -6,21 +6,21 @@ class CLI
     loop do
       user_input = menu
       if user_input == 'exit'
-        puts "    ----------Cheers to another great season!!----------"
+        puts "    ----------Cheers to another great season!!----------".colorize(:yellow)
         return
       elsif user_input =='y'
         self.list_players
         self.choose_player
         
       else
-        puts "You have preesed an invalid key. Please try again !!"
+        puts "You have preesed an invalid key. Please try again !!".colorize(:yellow)
       end
     end
   end
 
   def welcome
-    puts "================== Welcome fans of Manchester United! =========================\n\n"
-    puts "Would you like to see the current team? Press 'Y' or 'exit' to exit \n"
+    puts "================== Welcome fans of Manchester United! =========================\n\n".colorize(:yellow)
+    puts "Would you like to see the current team? Press 'Y' or 'exit' to exit \n".colorize(:yellow)
   end
 
   def menu
@@ -35,22 +35,23 @@ class CLI
   end
   
   def choose_player
-    puts "Choose a player you want to know more about!"
-    puts "To choose player by jersey number, type 'number'"
+    puts "Choose a player you want to know more about!".colorize(:yellow)
+    puts "To choose player by jersey number, type 'number'".colorize(:yellow)
     
     input = menu
     
     if input == "number"
-      puts "Enter the jesery number of player you are looking for "
+      puts "Enter the jesery number of player you are looking for ".colorize(:yellow)
       info = menu
       player = Player.find_by_number(info)
     elsif input.to_i > 0
       info = input.strip.to_i-1
       player = Player.all[info] 
     else 
-      puts "You have preesed an invalid key. Please try again !!"
-      puts "Would you like to see the current team again? Press 'y' to coninue"
-      puts "Press 'exit' to exit!"
+    
+      puts "You have preesed an invalid key. Please try again !!".colorize(:yellow)
+      puts "Would you like to see the current team again? Press 'y' to coninue".colorize(:yellow)
+      puts "Press 'exit' to exit!".colorize(:yellow)
       return
     end
   
@@ -58,7 +59,7 @@ class CLI
     Scraper.scrape_bio(player)
     
     self.display_player_info(player)
-    puts "Retreiving more info about player ...."
+    puts "Retreiving more info about player ....".colorize(:yellow)
     sleep(2)
     self.display_player_bio(player)
   
@@ -74,7 +75,7 @@ class CLI
     puts "Heigth: " + "#{player.height}".colorize(:red)
     puts "Weight: " + "#{player.weight}".colorize(:red)
     puts "\n"
-    puts "Player info retreived from 'https://www.premierleague.com/'"
+    puts "Player info retreived from 'https://www.premierleague.com/'".colorize(:yellow)
 
   end
   
@@ -82,10 +83,10 @@ class CLI
     puts "\n"
     puts "#{player.bio}".colorize(:green)
     puts "\n"
-    puts "Player bio retreived from 'https://www.manutd.com/'"
+    puts "Player bio retreived from 'https://www.manutd.com/'".colorize(:yellow)
     puts "\n"
-    puts "Would you like to see the current team again? Press 'y' to coninue"
-    puts "Press 'exit' to exit!"
+    puts "Would you like to see the current team again? Press 'y' to coninue".colorize(:yellow)
+    puts "Press 'exit' to exit!".colorize(:yellow)
   end
 
 
