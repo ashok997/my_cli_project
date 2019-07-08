@@ -9,7 +9,7 @@ class CLI
         puts "    ----------Cheers to another great season!!----------".colorize(:yellow)
         return
       elsif user_input =='y'
-        self.list_players
+        self.print_squad_table
         self.choose_player
         
       else
@@ -28,10 +28,15 @@ class CLI
     return input
   end
   
-  def list_players
-    puts "\n"
-    Player.all.each_with_index {|player, i| puts "#{i+1}.""\t""#{player.name}""\t\t" "#{player.position}""\t""#{player.jersey_number}"}
-    puts "\n"
+  def print_squad_table
+    rows =[]
+    Player.all.each_with_index do |player, i| 
+      rows << ["#{i+1}.", "#{player.name}", "#{player.position}","#{player.jersey_number}"]
+    end
+    table = Terminal::Table.new :headings => ["S.N.", "Name", "Position", "Jersey Number"], :rows => rows
+
+    puts table
+  
   end
   
   def choose_player
@@ -44,11 +49,10 @@ class CLI
       puts "Enter the jesery number of player you are looking for ".colorize(:yellow)
       info = menu
       player = Player.find_by_number(info)
-    elsif input.to_i > 0
+    elsif input.to_i > 0 && input.to_i < Player.all.length+1
       info = input.strip.to_i-1
       player = Player.all[info] 
     else 
-    
       puts "You have preesed an invalid key. Please try again !!".colorize(:yellow)
       puts "Would you like to see the current team again? Press 'y' to coninue".colorize(:yellow)
       puts "Press 'exit' to exit!".colorize(:yellow)
@@ -91,4 +95,3 @@ class CLI
 
 
  end
- 

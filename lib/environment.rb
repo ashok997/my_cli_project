@@ -2,6 +2,7 @@ require 'pry'
 require 'nokogiri'
 require 'open-uri'
 require 'colorize'
+require 'terminal-table'
 
 
 module MyCliProject
