@@ -11,7 +11,6 @@ class CLI
       elsif user_input =='y'
         self.print_squad_table
         self.choose_player
-        
       else
         puts "You have preesed an invalid key. Please try again !!".colorize(:yellow)
       end
@@ -62,13 +61,12 @@ class CLI
       puts "Press 'exit' to exit!".colorize(:yellow)
       return
     end
-  
-    Scraper.scrape_info(player)
-    Scraper.scrape_bio(player)
+
+    Scraper.scrape_info(player) if player.country == nil
+    Scraper.scrape_bio(player) if player.bio == nil
     
     self.display_player_info(player)
     puts "Retreiving more info about player ....".colorize(:yellow)
-    sleep(3)
     self.display_player_bio(player)
   
   end
