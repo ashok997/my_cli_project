@@ -4,7 +4,7 @@ class CLI
     self.welcome
     Scraper.scrape_players
     loop do
-      user_input = menu
+      user_input = self.menu
       if user_input == 'exit'
         puts "    ----------Cheers to another great season!!----------".colorize(:yellow)
         return
@@ -13,7 +13,7 @@ class CLI
         self.choose_player
       else
         puts "You have preesed an invalid key. Please try again !!".colorize(:yellow)
-         puts "Press 'y' to see the current team or 'exit' to exit ".colorize(:yellow)
+        puts "Press 'y' to see the current team or 'exit' to exit ".colorize(:yellow)
       end
     end
   end
@@ -23,11 +23,6 @@ class CLI
     puts "Would you like to see the current team? Press 'Y' or 'exit' to exit \n".colorize(:yellow)
   end
 
-  def menu
-    input = gets.strip.downcase
-    return input
-  end
-  
   def print_squad_table
     rows =[]
     
@@ -39,19 +34,17 @@ class CLI
     table.align_column(3, :center)
     table.align_column(2, :center)
     puts table
-
-  
   end
   
   def choose_player
     puts "Choose a player you want to know more about!".colorize(:yellow)
     puts "To choose player by jersey number, type 'number'".colorize(:yellow)
     
-    input = menu
+    input = self.menu
     
     if input == "number"
       puts "Enter the jesery number of player you are looking for ".colorize(:yellow)
-      info = menu
+      info = self.menu
      
       player = Player.find_by_number(info)
       if player == nil
@@ -77,6 +70,11 @@ class CLI
     puts "Retreiving more info about player ....".colorize(:yellow)
     self.display_player_bio(player)
   
+  end
+  
+  def menu
+    input = gets.strip.downcase
+    return input
   end
   
   def display_player_info(player)
