@@ -12,8 +12,7 @@ class CLI
         self.print_squad_table
         self.choose_player
       else
-        puts "You have preesed an invalid key. Please try again !!".colorize(:yellow)
-        puts "Press 'y' to see the current team or 'exit' to exit ".colorize(:yellow)
+        self.wrong_input
       end
     end
   end
@@ -43,23 +42,13 @@ class CLI
     input = self.menu
     
     if input == "number"
-      puts "Enter the jesery number of player you are looking for ".colorize(:yellow)
-      info = self.menu
-     
-      player = Player.find_by_number(info)
-      if player == nil
-        puts "Please refer to table again and check the number"
-        puts "Would you like to see the current team again? Press 'y' to coninue".colorize(:yellow)
-        puts "Press 'exit' to exit!".colorize(:yellow)
-        return
-      end
+      self.select_by_number
     elsif input.to_i > 0 && input.to_i < Player.all.length+1
       info = input.strip.to_i-1
       player = Player.all[info] 
     else 
       puts "You have preesed an invalid key. Please try again !!".colorize(:yellow)
-      puts "Would you like to see the current team again? Press 'y' to coninue".colorize(:yellow)
-      puts "Press 'exit' to exit!".colorize(:yellow)
+      self.ask_for_input_input
       return
     end
 
@@ -97,8 +86,27 @@ class CLI
     puts "\n"
     puts "Player bio retreived from 'https://www.manutd.com/'".colorize(:yellow)
     puts "\n"
+    self.ask_for_input
+  end
+  
+  def ask_for_input
     puts "Would you like to see the current team again? Press 'y' to coninue".colorize(:yellow)
     puts "Press 'exit' to exit!".colorize(:yellow)
+  end
+  
+  def select_by_number
+    puts "Enter the jesery number of player you are looking for ".colorize(:yellow)
+      info = self.menu
+      player = Player.find_by_number(info)
+      binding.pry
+      if player == nil
+        puts "Please refer to table again and check the number"
+        self.ask_for_input
+        return
+      else
+        player
+      end
+      
   end
 
 
