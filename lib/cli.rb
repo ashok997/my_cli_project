@@ -12,7 +12,7 @@ class CLI
         self.print_squad_table
         self.choose_player
       else
-        self.wrong_input
+        self.ask_for_input
       end
     end
   end
@@ -43,21 +43,16 @@ class CLI
     
     if input == "number"
       self.select_by_number
+      
     elsif input.to_i > 0 && input.to_i < Player.all.length+1
       info = input.strip.to_i-1
-      player = Player.all[info] 
+      player = Player.all[info]
+      self.scrape_and_display(player)
     else 
       puts "You have preesed an invalid key. Please try again !!".colorize(:yellow)
-      self.ask_for_input_input
+      self.ask_for_input
       return
     end
-
-    Scraper.scrape_info(player) if player.country == nil
-    Scraper.scrape_bio(player) if player.bio == nil
-    
-    self.display_player_info(player)
-    puts "Retreiving more info about player ....".colorize(:yellow)
-    self.display_player_bio(player)
   
   end
   
@@ -98,15 +93,21 @@ class CLI
     puts "Enter the jesery number of player you are looking for ".colorize(:yellow)
       info = self.menu
       player = Player.find_by_number(info)
-      binding.pry
       if player == nil
         puts "Please refer to table again and check the number"
-        self.ask_for_input
-        return
+        self.select_by_number
       else
-        player
-      end
+       self.scrape_and_display(player)
+     end
       
+  end
+  
+  def scrape_and_display(player)
+    Scraper.scrape_info(player) if player.country == nil
+    Scraper.scrape_bio(player) if player.bio == nil
+    self.display_player_info(player)
+    puts "Retreiving more info about player ....".colorize(:yellow)
+    self.display_player_bio(player)
   end
 
 
