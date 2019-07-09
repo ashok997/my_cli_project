@@ -15,7 +15,6 @@ class Player
   
   def self.find_by_number(number)
     self.all.find {|player| player.jersey_number==number}
-    
   end
   
 end

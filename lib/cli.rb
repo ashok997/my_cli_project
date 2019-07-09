@@ -51,7 +51,14 @@ class CLI
     if input == "number"
       puts "Enter the jesery number of player you are looking for ".colorize(:yellow)
       info = menu
+     
       player = Player.find_by_number(info)
+      if player == nil
+        puts "Please check the number and try again"
+        puts "Would you like to see the current team again? Press 'y' to coninue".colorize(:yellow)
+        puts "Press 'exit' to exit!".colorize(:yellow)
+        return
+      end
     elsif input.to_i > 0 && input.to_i < Player.all.length+1
       info = input.strip.to_i-1
       player = Player.all[info] 
