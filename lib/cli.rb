@@ -38,12 +38,9 @@ class CLI
   def choose_player
     puts "Choose a player you want to know more about!".colorize(:yellow)
     puts "To choose player by jersey number, type 'number'".colorize(:yellow)
-    
     input = self.menu
-    
     if input == "number"
       self.select_by_number
-      
     elsif input.to_i > 0 && input.to_i < Player.all.length+1
       info = input.strip.to_i-1
       player = Player.all[info]
@@ -53,7 +50,6 @@ class CLI
       self.ask_for_input
       return
     end
-  
   end
   
   def menu
@@ -99,7 +95,6 @@ class CLI
       else
        self.scrape_and_display(player)
      end
-      
   end
   
   def scrape_and_display(player)
