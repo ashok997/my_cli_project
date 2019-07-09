@@ -21,6 +21,16 @@ class CLI
     puts "================== Welcome fans of Manchester United! =========================\n\n".colorize(:yellow)
     puts "Would you like to see the current team? Press 'Y' or 'exit' to exit \n".colorize(:yellow)
   end
+  
+  def menu
+    input = gets.strip.downcase
+    return input
+  end
+  
+  def ask_for_input
+    puts "Would you like to see the current team again? Press 'y' to coninue".colorize(:yellow)
+    puts "Press 'exit' to exit!".colorize(:yellow)
+  end
 
   def print_squad_table
     rows =[]
@@ -51,12 +61,7 @@ class CLI
       return
     end
   end
-  
-  def menu
-    input = gets.strip.downcase
-    return input
-  end
-  
+
   def display_player_info(player)
     puts "\n"
     puts "Name: " + "#{player.name}".colorize(:red)
@@ -68,7 +73,6 @@ class CLI
     puts "Weight: " + "#{player.weight}".colorize(:red)
     puts "\n"
     puts "Player info retreived from 'https://www.premierleague.com/'".colorize(:yellow)
-
   end
   
   def display_player_bio(player)
@@ -78,11 +82,6 @@ class CLI
     puts "Player bio retreived from 'https://www.manutd.com/'".colorize(:yellow)
     puts "\n"
     self.ask_for_input
-  end
-  
-  def ask_for_input
-    puts "Would you like to see the current team again? Press 'y' to coninue".colorize(:yellow)
-    puts "Press 'exit' to exit!".colorize(:yellow)
   end
   
   def select_by_number
@@ -104,6 +103,4 @@ class CLI
     puts "Retreiving more info about player ....".colorize(:yellow)
     self.display_player_bio(player)
   end
-
-
- end
+end

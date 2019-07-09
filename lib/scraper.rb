@@ -1,6 +1,5 @@
 class Scraper
   
-  #class for scrapping
 URL='https://www.premierleague.com/clubs/12/Manchester-United/squad'
 
 
@@ -30,16 +29,15 @@ def self.scrape_info(player)
     player_height =  info_page.css("div .playerInfo .pdcol3 .info")[0]
     player_weight =  info_page.css("div .playerInfo .pdcol3 .info")[1]
     player_height ? player.height = player_height.text : player.height = "Information not available"
-    player_weight ? player.weight = player_weigth.text : player.weight = "Information not available"
-
-  end
+    player_weight ? player.weight = player_weight.text : player.weight = "Information not available"
+end
   
-  def self.scrape_bio(player)
+def self.scrape_bio(player)
     #https://www.manutd.com/en/players-and-staff/detail/david-de-gea
     url_name = player.name.gsub(" ","-").downcase.unicode_normalize(:nfkd).encode('ASCII', replace: '')
     url = "https://www.manutd.com/en/players-and-staff/detail/"+"#{url_name}"
     bio = Nokogiri.HTML(open(url))
     player.bio = bio.css("div .player-detail__bio .player-content .player-content__cta").text.strip
-  end
+end
   
 end
