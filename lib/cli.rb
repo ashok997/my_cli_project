@@ -13,6 +13,7 @@ class CLI
         self.choose_player
       else
         puts "You have preesed an invalid key. Please try again !!".colorize(:yellow)
+         puts "Press 'y' to see the current team or 'exit' to exit ".colorize(:yellow)
       end
     end
   end
@@ -54,7 +55,7 @@ class CLI
      
       player = Player.find_by_number(info)
       if player == nil
-        puts "Please check the number and try again"
+        puts "Please refer to table again and check the number"
         puts "Would you like to see the current team again? Press 'y' to coninue".colorize(:yellow)
         puts "Press 'exit' to exit!".colorize(:yellow)
         return

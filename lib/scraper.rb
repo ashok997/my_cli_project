@@ -27,8 +27,10 @@ def self.scrape_info(player)
     info_page = Nokogiri.HTML(open(url))
     player.country = info_page.css("div .playerInfo .playerCountry").text 
     player.dob = info_page.css("div .playerInfo .pdcol2 .info").text.strip
-    player.height = info_page.css("div .playerInfo .pdcol3 .info")[0] .text if  info_page.css("div .playerInfo .pdcol3 .info")[0]
-    player.weight = info_page.css("div .playerInfo .pdcol3 .info")[1].text if info_page.css("div .playerInfo .pdcol3 .info")[1]
+    
+    info_page.css("div .playerInfo .pdcol3 .info")[0] ? player.height = info_page.css("div .playerInfo .pdcol3 .info")[0].text : player.height = "Information not available"
+    info_page.css("div .playerInfo .pdcol3 .info")[1] ? player.weight = info_page.css("div .playerInfo .pdcol3 .info")[1].text : player.weight = "Information not available"
+
   end
   
   def self.scrape_bio(player)
