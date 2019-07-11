@@ -1,7 +1,7 @@
 # MyCliProject
 
-Welcome to my cli project! In this directory, you'll find the files you need to be able run the project. Follow the installation instruction 
-below and then exceute:
+Welcome to my cli project! This project was built as the requirement of Flatiron School project. The program will allow the user to view the current sqaud of Manchester United FC and get details of each players in the squad.
+In this directory, you'll find the files you need to be able run the project. Follow the installation instruction below and then exceute:
 ```
   bin/run
 ```
@@ -25,9 +25,8 @@ then execute:
 
 ## Usage
  The user can run this program to see the current squad of Manchester United FC. After looking at the current squad user can choose the player
- that they want to know more about. Primary source of inforamtion for this project is [ManchestUnitedFC Official](https://www.manutd.com/) and [Premier League](https://www.premierleague.com/clubs/12/Manchester-United/squad)
+ that they want to know more about. Primary sources of inforamtion for this project are [ManchestUnitedFC Official](https://www.manutd.com/) and [Premier League](https://www.premierleague.com/clubs/12/Manchester-United/squad) websites.
 
-## Development
 
 ## Built With
 
@@ -42,7 +41,7 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/'humor
 
 ## License
 
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+The project is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
 
 ## Code of Conduct
 
