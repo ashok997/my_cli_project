@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["'ASHOK MAHARJAN'"]
   spec.email         = ["'ashok997@gmail.com'"]
 
-  spec.summary       = %q{My cli project}
-  spec.description   = %q{CLI}
+  spec.summary       = %q{CLI project completed as per the requirement of Flatiron School first project.}
+  spec.description   = %q{This cli program lets the user see the current squad of Manchester United FC by scraping various websites}
   spec.homepage      = "https://github.com/ashok997/my_cli_project"
   spec.license       = "MIT"
 

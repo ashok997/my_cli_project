@@ -1,34 +1,40 @@
 # MyCliProject
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/my_cli_project`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Welcome to my cli project! In this directory, you'll find the files you need to be able run the project. Follow the installation instruction 
+below and then exceute:
+```
+  bin/run
+```
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'my_cli_project'
+Go to your favorite console and then clone the project:
+  
+ ```
+  $ git clone https://github.com/ashok997/my_cli_project.git
+ ```
+And go into the project direcotry:
 ```
+  $ cd my_cli_project
+```
+then execute:
 
-And then execute:
+    $ bundle install
+    $ gem install terminal-table
 
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install my_cli_project
 
 ## Usage
-
-TODO: Write usage instructions here
+ The user can run this program to see the current squad of Manchester United FC. After looking at the current squad user can choose the player
+ that they want to know more about. Primary source of inforamtion for this project is [ManchestUnitedFC Official](https://www.manutd.com/) and [Premier League](https://www.premierleague.com/clubs/12/Manchester-United/squad)
 
 ## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+## Built With
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+* [Nokogiri](https://rubygems.org/gems/nokogiri) - To scrape data from the websites
+* [Open-URI](https://www.rubydoc.info/stdlib/open-uri/OpenURI) - To open the webpages
+* [colorize](https://rubygems.org/gems/nokogiri) - Used to add color to the output
+* [terminal-table](https://rubygems.org/gems/terminal-table)-Used to dispaly output in a table for dispaly
 
 ## Contributing
 
