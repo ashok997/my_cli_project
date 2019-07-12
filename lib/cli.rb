@@ -56,7 +56,7 @@ class CLI
       player = Player.all[info]
       self.scrape_and_display(player)
     else 
-      puts "You have preesed an invalid key. Please try again !!".colorize(:yellow)
+      puts "You have pressed an invalid key. Please try again !!".colorize(:yellow)
       self.ask_for_input
       return
     end
