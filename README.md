@@ -46,3 +46,7 @@ The project is available as open source under the terms of the [MIT License](htt
 ## Code of Conduct
 
 Everyone interacting in the MyCliProject project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/'humorous-teacher-0611'/my_cli_project/blob/master/CODE_OF_CONDUCT.md).
+
+##Acknowledgement
+
+I could not have finised this project without continous support from our coach Michael Doherty.
