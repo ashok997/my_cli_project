@@ -2,7 +2,6 @@
 class CLI
   def run
     self.welcome
-    Scraper.scrape_players
     loop do
       user_input = self.menu
       if user_input == 'exit'
@@ -20,6 +19,7 @@ class CLI
   def welcome
     puts "================== Welcome fans of Manchester United! =========================\n\n".colorize(:yellow)
     puts "Would you like to see the current team? Press 'Y' or 'exit' to exit \n".colorize(:yellow)
+    Scraper.scrape_players
   end
   
   def menu
