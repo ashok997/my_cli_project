@@ -3,9 +3,9 @@ class CLI
   def run
     self.welcome
     loop do
-      user_input = self.menu
+      user_input = self.get_input
       if user_input == 'exit'
-        puts "    ----------Cheers to another great season!!----------".colorize(:yellow)
+        puts yellow("  ----------Cheers to another great season!!----------")
         return
       elsif user_input =='y'
         self.print_squad_table
@@ -17,19 +17,18 @@ class CLI
   end
 
   def welcome
-    puts "================== Welcome fans of Manchester United! =========================\n\n".colorize(:yellow)
-    puts "Would you like to see the current team? Press 'Y' or 'exit' to exit \n".colorize(:yellow)
+    puts yellow("================== Welcome fans of Manchester United! =========================\n\n")
+    puts yellow("Would you like to see the current team? Press 'Y' or 'exit' to exit \n")
     Scraper.scrape_players
   end
   
-  def menu
+  def get_input
     input = gets.strip.downcase
-    return input
   end
   
   def ask_for_input
-    puts "Would you like to see the current team again? Press 'y' to coninue".colorize(:yellow)
-    puts "Press 'exit' to exit!".colorize(:yellow)
+    puts yellow("Would you like to see the current team again? Press 'y' to coninue")
+    puts yellow("Press 'exit' to exit!")
   end
 
   def print_squad_table
@@ -46,9 +45,9 @@ class CLI
   end
   
   def choose_player
-    puts "Choose a player you want to know more about!".colorize(:yellow)
-    puts "To choose player by jersey number, type 'number'".colorize(:yellow)
-    input = self.menu
+    puts yellow("Choose a player you want to know more about!")
+    puts yellow("To choose player by jersey number, type 'number'")
+    input = self.get_input
     if input == "number"
       self.select_by_number
     elsif input.to_i > 0 && input.to_i < Player.all.length+1
@@ -56,7 +55,7 @@ class CLI
       player = Player.all[info]
       self.scrape_and_display(player)
     else 
-      puts "You have pressed an invalid key. Please try again !!".colorize(:yellow)
+      puts yellow("You have pressed an invalid key. Please try again !!")
       self.ask_for_input
       return
     end
@@ -64,29 +63,29 @@ class CLI
 
   def display_player_info(player)
     puts "\n"
-    puts "Name: " + "#{player.name}".colorize(:red)
-    puts "Position: " + "#{player.position}".colorize(:red)
-    puts "Jersey_number: " + "#{player.jersey_number}".colorize(:red)
-    puts "Country: " + "#{player.country}".colorize(:red)
-    puts "Date of Birth (Age): " + "#{player.dob}".colorize(:red)
-    puts "Heigth: " + "#{player.height}".colorize(:red)
-    puts "Weight: " + "#{player.weight}".colorize(:red)
+    puts "Name: " + red("#{player.name}")
+    puts "Position: " + red("#{player.position}")
+    puts "Jersey_number: " + red("#{player.jersey_number}")
+    puts "Country: " + red("#{player.country}")
+    puts "Date of Birth (Age): " + red("#{player.dob}")
+    puts "Heigth: " + red("#{player.height}")
+    puts "Weight: " + red("#{player.weight}")
     puts "\n"
-    puts "Player info retreived from 'https://www.premierleague.com/'".colorize(:yellow)
+    puts yellow("Player info retreived from 'https://www.premierleague.com/'")
   end
   
   def display_player_bio(player)
     puts "\n"
     puts "#{player.bio}".colorize(:green)
     puts "\n"
-    puts "Player bio retreived from 'https://www.manutd.com/'".colorize(:yellow)
+    puts yellow("Player bio retreived from 'https://www.manutd.com/'")
     puts "\n"
     self.ask_for_input
   end
   
   def select_by_number
-    puts "Enter the jesery number of player you are looking for ".colorize(:yellow)
-      info = self.menu
+    puts yellow("Enter the jesery number of player you are looking for ")
+      info = self.get_input
       player = Player.find_by_number(info)
       if player == nil
         puts "Please refer to table again and check the number"
@@ -100,7 +99,17 @@ class CLI
     Scraper.scrape_info(player) if player.country == nil
     Scraper.scrape_bio(player) if player.bio == nil
     self.display_player_info(player)
-    puts "Retreiving more info about player ....".colorize(:yellow)
+    puts yellow("Retreiving more info about player ....")
     self.display_player_bio(player)
   end
+  
+  def yellow(string)
+    string.colorize(:yellow)
+  end
+  
+  def red(string)
+    string.colorize(:red)
+  end
+  
+  
 end
