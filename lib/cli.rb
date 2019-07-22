@@ -27,7 +27,7 @@ class CLI
   end
   
   def ask_for_input
-    puts yellow("Would you like to see the current team again? Press 'y' to coninue")
+    puts yellow("Would you like to see the current team? Press 'y' to coninue")
     puts yellow("Press 'exit' to exit!")
   end
 
@@ -56,7 +56,7 @@ class CLI
       self.scrape_and_display(player)
     else 
       puts yellow("You have pressed an invalid key. Please try again !!")
-      self.ask_for_input
+      self.choose_player
       return
     end
   end
@@ -96,8 +96,8 @@ class CLI
   end
   
   def scrape_and_display(player)
-    Scraper.scrape_info(player) if player.country == nil
-    Scraper.scrape_bio(player) if player.bio == nil
+    Scraper.scrape_info(player) if !player.country
+    Scraper.scrape_bio(player) if !player.bio
     self.display_player_info(player)
     puts yellow("Retreiving more info about player ....")
     self.display_player_bio(player)
